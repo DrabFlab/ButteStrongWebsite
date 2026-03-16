@@ -13,8 +13,8 @@ $info = include __DIR__ . '/../data/info.php';
     </head>
     <body>
         <div class=encompass>
-            <div class="inner-wrap">
             <?php include __DIR__ . '/../includes/header.php'; ?>
+            <div class="inner-wrap">
 
             <main class="content">
                 <h1>Terms of Service</h1>
@@ -32,9 +32,10 @@ $info = include __DIR__ . '/../data/info.php';
 
                 <h2>Changes to Terms</h2>
                 <p>We may update these terms at any time. Continued use of the site constitutes acceptance of changes.</p>
+                
             </main>
+            <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
-        <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
     </body>
     <script src="/ButteStrongWebsite/public/js/events.js" defer></script>

@@ -60,14 +60,15 @@ body{
 /* Outer wrapper: stacks inner-wrap and footer vertically */
 .encompass {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     min-height: 100vh;
 }
 
 /* Inner wrapper: navbar and content sit side by side */
+/*flex-directions were reversed here and above*/
 .inner-wrap {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
 }
 

@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <body>
         <a href="#main-content" class="skip-link">Skip to main content</a>
         <div class="encompass">
+            <?php include __DIR__ . '/../includes/header.php'; ?>
             <div class="inner-wrap">
-                <?php include __DIR__ . '/../includes/header.php'; ?>
 
                 <main class="content" id="main-content">
                     <h1>Contact Us</h1>
@@ -97,8 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </form>
                     </section>
                 </main>
+                <?php include __DIR__ . '/../includes/footer.php'; ?>
             </div>
-            <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
     </body>
     <script src="/ButteStrongWebsite/public/js/events.js" defer></script>

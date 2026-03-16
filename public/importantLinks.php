@@ -15,8 +15,8 @@ $info = include __DIR__ . '/../data/info.php';
     <body>
 
         <div class="encompass">
+             <?php include __DIR__ . '/../includes/header.php'; ?>
             <div class="inner-wrap">
-                <?php include __DIR__ . '/../includes/header.php'; ?>
 
                 <main class="content">
 
@@ -41,10 +41,9 @@ $info = include __DIR__ . '/../data/info.php';
                 </ul>
 
                 </section>
-
                 </main>
+                <?php include __DIR__ . '/../includes/footer.php'; ?>
             </div>    
-        <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
     </body>
     <script src="/ButteStrongWebsite/public/js/events.js" defer></script>

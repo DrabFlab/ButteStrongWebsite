@@ -13,8 +13,8 @@ $info = include __DIR__ . '/../data/info.php';
     </head>
     <body>
         <div class=encompass>
+            <?php include __DIR__ . '/../includes/header.php'; ?>
             <div class="inner-wrap">    
-                <?php include __DIR__ . '/../includes/header.php'; ?>
 
                 <main class="legal-section">
                     <div class = privacy_policy>
@@ -41,8 +41,8 @@ $info = include __DIR__ . '/../data/info.php';
                         </ul>
                     </div>
                 </main>
+                <?php include __DIR__ . '/../includes/footer.php'; ?>
             </div>
-        <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
     </body>
     <script src="/ButteStrongWebsite/public/js/events.js" defer></script>

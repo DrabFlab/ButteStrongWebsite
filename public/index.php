@@ -19,8 +19,8 @@ $info = include __DIR__ . '/../data/info.php';
         <a href="#main-content" class="skip-link">Skip to main content</a>
 
         <div class=encompass>
+            <?php include __DIR__ . '/../includes/header.php'; ?>
             <div class="inner-wrap">
-                <?php include __DIR__ . '/../includes/header.php'; ?>
                 <main id="main-content" class="content">
                     <div class="home_image">
                         <img src="/ButteStrongWebsite/public/images/istockphoto-1502044339-1024x1024.jpg" alt="View of Butte, Montana with a historic mining gallows frame in the foreground">
@@ -38,8 +38,8 @@ $info = include __DIR__ . '/../data/info.php';
                                             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                                             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>           
                 </main>
+                <?php include __DIR__ . '/../includes/footer.php'; ?>
             </div>
-            <?php include __DIR__ . '/../includes/footer.php'; ?>
         </div>
     </body>
     <script src="/ButteStrongWebsite/public/js/events.js" defer></script>
