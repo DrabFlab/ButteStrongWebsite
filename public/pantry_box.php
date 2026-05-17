@@ -18,9 +18,9 @@ $locations   = file_exists($pantry_file) ? include $pantry_file : [];
 </head>
 <body>
 <div class="encompass">
-    <div class="inner-wrap">
+    <?php include __DIR__ . '/../includes/header.php'; ?>
 
-        <?php include __DIR__ . '/../includes/header.php'; ?>
+    <div class="inner-wrap">
 
         <main class="content" id="main-content">
             <div class="pantry-page">
@@ -76,8 +76,10 @@ $locations   = file_exists($pantry_file) ? include $pantry_file : [];
 
             </div>
         </main>
-    </div>
         <?php include __DIR__ . '/../includes/footer.php'; ?>
+    </div>
+
+    
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
