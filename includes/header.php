@@ -16,19 +16,19 @@
             </ul>
             <ul class="socials" data-visible="false">
                 <?php if (!empty($info['facebook_link'])): ?>
-                <li><a href="<?= htmlspecialchars($info['facebook_link']) ?>" target="_blank" rel="noopener noreferrer">
+                <li><a href="<?= htmlspecialchars($info['facebook_link']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Link for Facebook.">
                     <i class="fa-brands fa-facebook"></i>
                 </a></li>
                 <?php endif; ?>
 
                 <?php if (!empty($info['x_link'])): ?>
-                <li><a href="<?= htmlspecialchars($info['x_link']) ?>" target="_blank" rel="noopener noreferrer">
+                <li><a href="<?= htmlspecialchars($info['x_link']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Link for Twitter.">
                     <i class="fa-brands fa-x-twitter"></i>
                 </a></li>
                 <?php endif; ?>
 
                 <?php if (!empty($info['instagram_link'])): ?>
-                <li><a href="<?= htmlspecialchars($info['instagram_link']) ?>" target="_blank" rel="noopener noreferrer">
+                <li><a href="<?= htmlspecialchars($info['instagram_link']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Link for Instagram.">
                     <i class="fa-brands fa-instagram"></i>
                 </a></li>
                 <?php endif; ?>
