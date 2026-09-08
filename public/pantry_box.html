@@ -1,0 +1,226 @@
+<?php
+// Loads locations saved by the admin panel
+$pantry_file = __DIR__ . '/../data/pantry_locations.php';
+$locations   = file_exists($pantry_file) ? include $pantry_file : [];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butte Pantry Locations – Butte Strong</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="./css/navbar_styles.css" />
+    <link rel="stylesheet" href="./css/footer_styles.css">
+    <link rel="stylesheet" href="./css/pantry_box_styles.css">
+</head>
+<body>
+<div class="encompass">
+
+    <header class="site-header">
+        <div class="navbar">
+            <div class="topper">
+            <a href="./index.html"><div class="logolink"><img src="./images/logo-removebg-preview.png" class="logo" alt="Butte Strong home page logo"></div></a>
+            <button class="nav_burger" aria-label="Toggle navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            </div>
+            <nav class="sidebar" id="primary-navigation" aria-label="Main navigation">
+                <ul data-visible="false">
+                    <li><a href="./resources.html" class="navlink">Important Links</a></li>
+                    <li><a href="./pantry_box.html" class="navlink">Butte Pantry Locations</a></li>
+                    <li><a href="./contact_page.html" class="navlink">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="inner-wrap">
+
+        <main class="content" id="main-content">
+            <div class="pantry-page">
+
+                <div class="pantry-header">
+                    <h1>Butte Pantry Locations</h1>
+                    <p>Find a free community pantry box near you. Take what you need, leave what you can. All boxes are open to everyone — no questions asked.</p>
+                </div>
+
+                <div class="pantry-banner">
+                    <i class="fa-solid fa-box-open"></i>
+                    <p>
+                        <strong>How it works</strong>
+                        Each box is stocked by community volunteers. If you'd like to donate non-perishable food items, simply visit any location and place items inside the box.
+                    </p>
+                </div>
+
+                <div id="pantry-map"></div>
+
+                <div id="pantryContainer" class="pantry-grid">
+                    <div class="pantry-empty">
+                        <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem;display:block;margin-bottom:12px;color:#ccc;"></i>
+                        Loading locations...
+                    </div>
+                </div>
+
+                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', loadPantryLocations);
+
+                    async function loadPantryLocations() {
+                        const container = document.getElementById('pantryContainer');
+
+                        try {
+                            const response = await fetch('json/pantry.json');
+                            
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+
+                            const locations = await response.json();
+
+                            // Clear the loading indicator
+                            container.innerHTML = '';
+
+                            // Handle Empty State: <?php if (empty($locations)): ?>
+                            if (!locations || locations.length === 0) {
+                                container.innerHTML = `
+                                    <div class="pantry-empty">
+                                        <i class="fa-solid fa-map-pin" style="font-size:2rem;display:block;margin-bottom:12px;color:#ccc;"></i>
+                                        Locations coming soon. Check back later!
+                                    </div>
+                                `;
+                                return;
+                            }
+
+                            // Handle Iteration: <?php foreach ($locations as $i => $loc): ?>
+                            locations.forEach((loc, index) => {
+                                const card = document.createElement('div');
+                                card.className = 'pantry-card';
+                                card.setAttribute('data-index', index);
+
+                                // Check for photo existence in the object data
+                                const photoHtml = (loc.photo && loc.photo.trim() !== '')
+                                    ? `<img src="${escapeHtml(loc.photo)}" alt="Photo of ${escapeHtml(loc.name)} pantry box" class="pantry-card-img" onerror="this.outerHTML='<div class=\\'pantry-card-img-placeholder\\'><i class=\\'fa-solid fa-image\\'></i> Photo coming soon</div>'">`
+                                    : `<div class="pantry-card-img-placeholder">
+                                        <i class="fa-solid fa-image"></i>
+                                        Photo coming soon
+                                    </div>`;
+
+                                // Optional notes block: <?php if (!empty($loc['notes'])): ?>
+                                const notesHtml = loc.notes 
+                                    ? `<p class="pantry-card-notes">${escapeHtml(loc.notes)}</p>` 
+                                    : '';
+
+                                card.innerHTML = `
+                                    ${photoHtml}
+                                    <div class="pantry-card-body">
+                                        <h2>${escapeHtml(loc.name || 'Pantry Location')}</h2>
+                                        <p class="pantry-card-address">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            ${escapeHtml(loc.address || '')}
+                                        </p>
+                                        ${notesHtml}
+                                    </div>
+                                `;
+
+                                container.appendChild(card);
+                            });
+
+                            const map = L.map('pantry-map').setView([46.0038, -112.5348], 13);
+
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                                maxZoom: 19
+                            }).addTo(map);
+
+                            const blackIcon = L.divIcon({
+                                className: '',
+                                html: `<div style="width:14px;height:14px;background:#111;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 2px #111;"></div>`,
+                                iconSize: [14, 14],
+                                iconAnchor: [7, 7],
+                                popupAnchor: [0, -10]
+                            });
+
+                            const markers = locations.map((loc, i) => {
+                                const marker = L.marker([loc.lat, loc.lng], { icon: blackIcon }).addTo(map);
+                                marker.bindPopup(`
+                                    <strong style="font-family:Georgia,serif;font-size:1rem;">${loc.name}</strong><br>
+                                    <span style="font-size:0.85rem;color:#555;">${loc.address}</span>
+                                `);
+                                return marker;
+                            });
+
+                            document.querySelectorAll('.pantry-card').forEach((card, i) => {
+                                card.addEventListener('click', () => {
+                                    map.setView([locations[i].lat, locations[i].lng], 16);
+                                    markers[i].openPopup();
+                                    document.getElementById('pantry-map').scrollIntoView({ behavior: 'smooth' });
+                                });
+                            });
+
+                            if (locations.length > 0) {
+                                map.fitBounds(locations.map(l => [l.lat, l.lng]), { padding: [40, 40], maxZoom: 15 });
+                            }
+
+                                } catch (error) {
+                                    console.error('Error fetching locations:', error);
+                                    container.innerHTML = `
+                                        <div class="pantry-empty">
+                                            <i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;display:block;margin-bottom:12px;color:#d9534f;"></i>
+                                            Unable to load locations right now. Please try again later.
+                                        </div>
+                                    `;
+                        }
+
+
+                                
+
+                    }
+
+                    // Helper function equivalent to PHP's htmlspecialchars() to prevent XSS
+                    function escapeHtml(str) {
+                        if (!str) return '';
+                        return String(str)
+                            .replace(/&/g, "&amp;")
+                            .replace(/</g, "&lt;")
+                            .replace(/>/g, "&gt;")
+                            .replace(/"/g, "&quot;")
+                            .replace(/'/g, "&#039;");
+                    }
+                </script>
+
+            </div>
+        </main>
+        <footer>
+            <div class="cr">
+                <p>&copy; <?= date('Y') ?> Butte Strong. All rights reserved.</p>
+            </div>
+            
+            <h2 class="visually-hidden">Legal</h2>
+            <nav class="Legals">
+                <ul>
+                    <li><a href="./privacy.html">Privacy Policy</a></li>
+                    <li><a href="./terms.html">Terms of Service</a></li>
+                </ul>
+            </nav>
+            <nav class="Links">
+                <ul>
+                    <li><a href="./index.html">Butte Strong</a></li>
+                    <li><a href="./resources.html">Resources</a></li>
+                    <li><a href="./pantry_box.html">Butte Pantries</a></li>
+                    <li><a href="./contact_page.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
+    
+</div>
+
+<script src="/ButteStrongWebsite/public/js/events.js" defer></script>
+</body>
+</html>

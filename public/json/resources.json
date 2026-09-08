@@ -1,0 +1,32 @@
+[
+  {
+    "logo": "./images/resources/CLINIC-logo.png",
+    "name": "Rapid Response Toolkit",
+    "description": "The newly updated toolkit, now available in English and Spanish, is based on best practices and lessons learned from communities conducting rapid responses during ICE raids and arrests. It provides a plan of action for communities to support and guide people during and after a raid, as well as a how-to guide and a model notebook to help you build an inclusive rapid response team. Help empower your community by organizing and staying informed.",
+    "url": "https://www.cliniclegal.org/toolkits/rapid-response-toolkit"
+  },
+  {
+    "logo": "./images/resources/omn-logo.png",
+    "name": "Community Defense Guide",
+    "description": "The Community Defense Guide is a vital resource for activists, offering essential skills in first aid, rapid response, and collective support, whether from home or on the front lines. Equip yourself with the knowledge needed to protect and stand in solidarity with your neighbors when it matters most.",
+    "url": "https://www.occupymn.org/community-defense/"
+  },
+  {
+    "logo": "./images/resources/nlg-logo.jpg",
+    "name": "Legal Steps and Choices",
+    "description": "Prosecutions vary greatly, but they follow a similar process across the U.S. Although designed to be oppressive and scary, there are choices to be made at each step of the process. This guide is meant to help people facing charges navigate the criminal punishment system so that they can preserve their dignity and autonomy against the State.",
+    "url": "https://www.nlg.org/new-nlg-kyr-guide-legal-steps-choices-navigating-the-criminal-punishment-system/"
+  },
+  {
+    "logo": "./images/resources/isn-logo.png",
+    "name": "Family Safety Planning Toolkit for Enforcement Preparedness",
+    "description": "This toolkit was developed by the Immigrant Services Network of Austin to assist individuals and families with preparing to respond effectively in the event of a local worksite raid by Immigration and Customs Enforcement (ICE).",
+    "url": "https://isnaustin.wordpress.com/wp-content/uploads/2013/02/family-safety-planning-toolkit-english.pdf"
+  },
+  {
+    "logo": "./images/resources/COPAL-logo.png",
+    "name": "The Handbook for Constitutional Observers",
+    "description": "Developed by COPAL and the Immigrant Defense Network, this handbook is a resource for individuals and organizations committed to advancing justice and building resilient communities. It reflects a shared commitment to dignity, equity, and collective action in times of change.",
+    "url": "https://copalmn.org/the-handbook-for-constitutional-observers/"
+  }
+]

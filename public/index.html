@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Butte Strong Home Page</title>
+        <link rel="stylesheet" href="./css/navbar_styles.css">
+        <link rel="stylesheet" href="./css/footer_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="./css/index_styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    
+    <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <div class=encompass>
+
+            <header class="site-header">
+                <div class="navbar">
+                    <div class="topper">
+                    <a href="./index.html"><div class="logolink"><img src="./images/logo-removebg-preview.png" class="logo" alt="Butte Strong home page logo"></div></a>
+                    <button class="nav_burger" aria-label="Toggle navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>
+                    <nav class="sidebar" id="primary-navigation" aria-label="Main navigation">
+                        <ul data-visible="false">
+                            <li><a href="./resources.html" class="navlink">Important Links</a></li>
+                            <li><a href="./pantry_box.html" class="navlink">Butte Pantry Locations</a></li>
+                            <li><a href="./contact_page.html" class="navlink">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="inner-wrap">
+                <main id="main-content" class="content">
+                    <div class="home_image">
+                        <img src="./images/town.jpg" alt="View of Butte, Montana with a historic mining gallows frame in the foreground">
+                    </div>
+                    <div class="welcome-message">
+
+                    <h1>Butte Strong</h1> 
+                    </div>
+                    <p class="home-content">Butte Strong is a non-profit, non-partisan, organization focused on providing resources, tools, and education on the rights affforded to every person in Butte-Silver Bow community.
+                        Butte Strong also fosters a strong community of active neighbors with the goal of creating a community that not only looks out for their communitys, but also the larger systems working behind the scene.
+                    </p>
+                    <p class="home-content">This website is for informational purposes only and is not a substitute for professional advice or emergency services. </p>
+                    <p class="home-content-heading">
+                        <b>Mission Statement</b>
+                    </p>
+                    <p class="home-content"> 
+                        To organize and protect the residents of Butte by ensuring equitable access to justice,
+                         safety, and resources without exception.
+                    </p>
+                    <p class="home-content-heading">
+                        <b>Vision Statement</b>
+                    </p>
+                    <p class="home-content">
+                        At Butte Strong neighborhood watch, every person truly belongs and feels secure, 
+                        where background or identity never dictates one's access to safety, and where community-led accountability 
+                        ensures our systems work for the benefit of all.
+                    </p>
+                    <p class="home-content-heading">
+                        <b>Core Values</b>
+                    </p>
+                    <p class="home-content">
+                        <b>Collective Protection:</b> We are a community coalition built on the simple, powerful act of neighbors
+                         looking out for one another.
+                    </p>
+                    <p class="home-content">
+                        <b>Inherent Dignity:</b> Every individual deserves respect and safety regardless of where they were born,
+                         what they look like, or who they are.
+                    </p>
+                    <p class="home-content">    
+                        <b>Equity is a Right:</b> Justice and resources are not privileges to be earned, but fundamental rights for every neighbor.
+                    </p>
+                    <p class="home-content">
+                        <b>Systemic Accountability:</b> We don't just watch the streets; we watch the systems. We ensure that institutions meant to serve the public remain equitable and effective.
+                    </p>        
+                </main>
+                <footer>
+                    <div class="cr">
+                        <p>&copy; <?= date('Y') ?> Butte Strong. All rights reserved.</p>
+                    </div>
+                    
+                    <h2 class="visually-hidden">Legal</h2>
+                    <nav class="Legals">
+                        <ul>
+                            <li><a href="./privacy.html">Privacy Policy</a></li>
+                            <li><a href="./terms.html">Terms of Service</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="Links">
+                        <ul>
+                            <li><a href="./index.html">Butte Strong</a></li>
+                            <li><a href="./resources.html">Resources</a></li>
+                            <li><a href="./pantry_box.html">Butte Pantries</a></li>
+                            <li><a href="./contact_page.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </footer>
+
+            </div>
+        </div>
+    </body>
+    <script src="./js/events.js" defer></script>
+</html>
+
